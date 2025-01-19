@@ -26,7 +26,7 @@ jobs:
 
       - name: Build Docker image 
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/qr-generator-frontend:latest -f api/Dockerfile .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/qr-generator-frontend:latest .
 
       - name: Push Docker Image
         run: |
