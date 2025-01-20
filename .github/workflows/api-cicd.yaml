@@ -30,7 +30,11 @@ jobs:
 
       - name: Push Docker Image
         run: |
+<<<<<<< HEAD
           docker push ${{ secrets.DOCKER_USERNAME }}/qr-generator-api:latest .
+=======
+          docker push ${{ secrets.DOCKER_USERNAME }}/qr-generator-frontend:latest 
+>>>>>>> 69b416386ad12560daffad8fb24404659658baba
 
           
   
