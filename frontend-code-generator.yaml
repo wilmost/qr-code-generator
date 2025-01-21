@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: frontend-code-generator
+  name: frontend-code-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-code-generator
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: frontend-code-generator
+    spec:
+      containers:
+      - image: wilmost/qr-generator-frontend:latest
+        name: qr-generator-frontend
+        ports:
+        - containerPort: 3000
+        resources: {}
+status: {}
