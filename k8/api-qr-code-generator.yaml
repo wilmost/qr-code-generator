@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: api-code-generator
+  name: api-code-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-code-generator
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: api-code-generator
+    spec:
+      containers:
+      - image: wilmost/qr-generator-api:latest
+        name: qr-generator-api
+        env:
+        - name: AWS_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-code-generator-secret
+              key: accesskey
+        - name: AWS_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-code-generator-secret
+              key: secretkey
+        - name: BUCKET_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: api-code-generator-configmap
+              key: bucket_name
+        ports:
+        - containerPort: 8000
+
