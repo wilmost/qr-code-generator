@@ -1,0 +1,10 @@
+--- 
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-code-generator-configmap
+data:
+ 
+  bucket_name: "<replace with your bucket name>"
+ 
