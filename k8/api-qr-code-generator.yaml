@@ -36,6 +36,11 @@ spec:
             configMapKeyRef:
               name: api-code-generator-configmap
               key: bucket_name
+        - name: FRONTEND_ORIGIN
+          valueFrom:
+            configMapKeyRef:
+              name: api-code-generator-configmap
+              key: frontend_origin
         ports:
         - containerPort: 8000
 
