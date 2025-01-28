@@ -11,9 +11,11 @@ load_dotenv()
 
 app = FastAPI()
 
+frontend_origin= os.getenv("FRONTEND_ORIGIN")
+
 # Allowing CORS for local testing
 origins = [
-    "http://localhost:3000"
+    frontend_origin
 ]
 
 app.add_middleware(
