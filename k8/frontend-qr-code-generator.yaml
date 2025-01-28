@@ -20,6 +20,12 @@ spec:
       containers:
       - image: wilmost/qr-generator-frontend:latest
         name: qr-generator-frontend
+        env:
+          - name: APP_BACKEND_URL
+            valueFrom:
+              configMapKeyRef:
+                name: api-code-generator-configmap
+                key: app_backend_url
         ports:
         - containerPort: 3000
         resources: {}
