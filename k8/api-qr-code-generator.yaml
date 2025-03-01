@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: api-code-generator
   name: api-code-generator
@@ -10,10 +9,8 @@ spec:
   selector:
     matchLabels:
       app: api-code-generator
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: api-code-generator
     spec:
