@@ -27,3 +27,9 @@ output "eks_node_group_status" {
   description = " status EKS node group"
   value       = aws_eks_node_group.eks_nodes.status
 }
+
+output "eks_vcp_cni_lastet_version" {
+  description = "Latest version of the VPC CNI addon"
+  value       = data.aws_eks_addon_version.vpc_cni.version
+  
+}
