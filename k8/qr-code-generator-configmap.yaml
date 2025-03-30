@@ -8,5 +8,5 @@ data:
  
   bucket_name: "<replace with your bucket name>"
   frontend_origin: "frontend-code-generator-service.default.svc.cluster.local" 
-  app_backend_url: "backen url"
+  app_backend_url: "api-code-generator.default.svc.cluster.local:8000"
  
