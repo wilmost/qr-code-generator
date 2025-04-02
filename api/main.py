@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import qrcode
 import boto3
 import os
+import logging
 from io import BytesIO
 
 # Loading Environment variable (AWS Access Key and Secret Key)
@@ -15,7 +16,8 @@ frontend_origin= os.getenv("FRONTEND_ORIGIN")
 
 # Allowing CORS for local testing
 origins = [
-    frontend_origin
+    frontend_origin, "http://localhost:3000" 
+    
 ]
 
 app.add_middleware(
@@ -35,7 +37,9 @@ s3 = boto3.client(
     aws_access_key_id= os.getenv("AWS_ACCESS_KEY"),
     aws_secret_access_key= os.getenv("AWS_SECRET_KEY"))
 
-    
+# Configure logging
+logging.basicConfig(level=logging.INFO,format='%(asctime)s %(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
 
 
 
@@ -67,7 +71,10 @@ async def generate_qr(url: str):
         
         # Generate the S3 URL
         s3_url = f"https://{bucket_name}.s3.amazonaws.com/{file_name}"
+        logger.info(f"QR Code uploaded to S3: {s3_url}")
+        
         return {"qr_code_url": s3_url}
     except Exception as e:
+        logger.error(f"Error uploading QR code to S3: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
     
