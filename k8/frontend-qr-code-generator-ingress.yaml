@@ -6,8 +6,9 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
-    - host: frontend.example
+    - host: qrcode.local
       http:
         paths:
           - path: /
@@ -15,5 +16,13 @@ spec:
             backend:
               service:
                 name: frontend-code-generator-service
+                port:
+                  number: 80
+
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: api-code-generator
                 port:
                   number: 80
