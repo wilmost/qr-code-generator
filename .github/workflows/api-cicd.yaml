@@ -5,9 +5,11 @@ on:
     branches:
       - master
       
-    paths:
-      - 'api/Dockerfile' 
-      - 'requirements.txt'
+    paths-ignore:
+      - 'k8/' 
+      - 'terraform/'
+      - 'readme.md' 
+
       
 
 jobs:
@@ -26,12 +28,12 @@ jobs:
 
       - name: Build Docker image 
         run: |
-          docker build ./api/ -t ${{ secrets.DOCKER_USERNAME }}/qr-generator-api:latest 
+          docker build ./api/ -t ${{ secrets.DOCKER_USERNAME }}/qr-generator-api:${{ github.sha }} 
 
       - name: Push Docker Image
         run: |
 
-          docker push ${{ secrets.DOCKER_USERNAME }}/qr-generator-api:latest 
+          docker push ${{ secrets.DOCKER_USERNAME }}/qr-generator-api:${{ github.sha }}
 
      
           
