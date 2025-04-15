@@ -6,7 +6,7 @@ on:
       - master
       
     paths:
-      - 'front-end-nextjs/Dockerfile' 
+      - 'front-end-nextjs/**' 
       
       
 
@@ -26,11 +26,11 @@ jobs:
 
       - name: Build Docker image 
         run: |
-          docker build ./front-end-nextjs/ -t ${{ secrets.DOCKER_USERNAME }}/qr-generator-frontend:latest 
+          docker build ./front-end-nextjs/ -t ${{ secrets.DOCKER_USERNAME }}/qr-generator-frontend:${{ github.sha }}
 
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/qr-generator-frontend:latest 
+          docker push ${{ secrets.DOCKER_USERNAME }}/qr-generator-frontend:${{ github.sha }}
 
           
   
