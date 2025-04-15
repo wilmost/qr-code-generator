@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 
 
 
-@app.post("/generate-qr/")
+@app.post("/api/generate-qr/")
 async def generate_qr(url: str):
     # Generate QR Code
     qr = qrcode.QRCode(
