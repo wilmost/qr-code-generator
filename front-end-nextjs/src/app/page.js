@@ -72,7 +72,7 @@ const styles = {
     padding: '10px 20px',
     marginTop: '20px',
     border: 'none',
-    borderRadius: '5px',
+    borderRadius: '6px',
     backgroundColor: '#0070f3',
     color: 'white',
     cursor: 'pointer',
